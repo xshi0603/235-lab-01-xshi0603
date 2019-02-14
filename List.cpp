@@ -43,3 +43,39 @@ std::string List::getDebugString(){
   s=s+" NULL\n";
   return s;
 }
+
+void List::push_back(std::string data){ // inserts at the end of the vector
+  if (head != nullptr) {
+    Node *newNode = new Node(data);
+    Node *t = head;
+    while (t->getNext() != nullptr){
+      t=t->getNext();
+    }
+    t->setNext(newNode); //segfaults
+  }
+}
+
+int List::size(){ // returns the size
+  int sizeCounter = 0;
+  Node *t = head;
+  while (t != nullptr){
+    sizeCounter++;
+    t=t->getNext();
+  }
+  return sizeCounter;
+}
+
+
+std::string &List::at(int index){ // returns the element at a location
+  Node *t = head;
+  for (int i = 0; i < index; i++) {
+    t=t->getNext();
+  }
+  return t->getData();
+}
+
+/*
+std::string List::insert(int,std::string); // inserts string at location
+void List::remove(int i); // removes the element at location i
+std::string &List::operator[](int); // overloaded square brackets
+*/
