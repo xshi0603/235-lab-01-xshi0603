@@ -15,5 +15,19 @@ TEST_CASE("Testing Linked List"){
   CHECK(l->at(2)=="three");
   CHECK(l->at(3)=="four");
   
+  l->insert(0, "1");
+  l->insert(0, "2");
+  l->insert(2, "3");
+
+  CHECK((*l)[0] == "2");
+  CHECK((*l)[1] == "1");
+  CHECK((*l)[2] == "3");
+
+  l->remove(2);
+
+  CHECK((*l)[2] == "one");
+  CHECK((*l)[3] == "two");
+
+
 
 }
