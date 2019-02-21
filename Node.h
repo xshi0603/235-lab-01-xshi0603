@@ -10,6 +10,7 @@ class Node{
   Node(std::string data, Node* next);
   void setData(std::string data);
   void setNext(Node *next);
-  std::string& getData();
+  std::string getData();
+  std::string& getRef();
   Node* getNext();
 };

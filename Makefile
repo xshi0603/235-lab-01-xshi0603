@@ -1,4 +1,4 @@
-CXXFLAGS=-g -std=gnu++0x
+CXXFLAGS=-std=c++11
 
 main: main.o List.o Node.o
 	g++ -o main main.o List.o Node.o

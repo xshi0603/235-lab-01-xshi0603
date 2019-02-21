@@ -18,9 +18,7 @@ List::~List(){
       t=t->getNext();
       delete t2;
     }
-  }
-  
-  
+  } 
 }
 
 void List::insert(std::string data){
@@ -53,6 +51,10 @@ void List::push_back(std::string data){ // inserts at the end of the vector
     }
     t->setNext(newNode); //segfaults
   }
+  else {
+    Node *newNode = new Node(data);
+    head = newNode;
+  }
 }
 
 int List::size(){ // returns the size
@@ -71,11 +73,48 @@ std::string &List::at(int index){ // returns the element at a location
   for (int i = 0; i < index; i++) {
     t=t->getNext();
   }
-  return t->getData();
+  return t->getRef();
 }
 
-/*
-std::string List::insert(int,std::string); // inserts string at location
-void List::remove(int i); // removes the element at location i
-std::string &List::operator[](int); // overloaded square brackets
-*/
+std::string List::insert(int index,std::string data){ // inserts string at location
+
+  Node *t = head;
+  Node *newNode;
+
+  if (index == 0) {
+    newNode = new Node(data, t);
+    head = newNode;
+    return t->getNext()->getData();
+  }
+
+  for (int i = 0; i < index - 1; i++) {
+    t=t->getNext();
+  }
+
+  newNode = new Node(data, t->getNext());
+  t->setNext(newNode);
+  return t->getNext()->getData();
+
+}
+
+void List::remove(int input) { // removes the element at location i
+
+  Node *t = head;
+  Node *temp = t->getNext();
+
+  int counter = 0;
+
+  while (counter < input - 1) {
+    t = temp;
+    temp = temp->getNext();
+    counter++;
+  }
+
+  t->setNext(temp->getNext()); 
+  delete temp;
+}
+
+std::string &List::operator[](int input) { // overloaded square brackets
+  return at(input);
+}
+

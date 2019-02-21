@@ -3,38 +3,34 @@
 
 int main()
 {
-  /*
   List *l = new List();
   std::cout << l->getDebugString();
-  l->insert("one");
-  l->insert("two");
-  l->insert("three");
-  l->insert("four");
+
+  std::cout << "Testing push_back" << endl;
+  l->push_back("one");
+  l->push_back("two");
+  l->push_back("three");
+  l->push_back("four");
   std::cout << l->getDebugString();
-  //std::cout << l->size();
-  std::cout << l->at(0);
-  std::cout << l->at(1);
-  std::cout << l->at(2);
-  delete l;
+  std::cout << endl;
 
+  std::cout << "Testing at" << endl;
+  std::cout << "The element at index 3 is: " << l->at(3) << endl;
+  std::cout << endl;
 
-  List l2;
-  l2.insert("a");
-  l2.insert("b");
-  l2.insert("c");
-  l2.insert("d");
-  std::cout << l2.getDebugString();
-  */
-
-  List *l = new List();
+  std::cout << "Testing insert" << endl;
+  l->insert(0, "hello1");  
   std::cout << l->getDebugString();
-  
-  l->push_back("one");
-  l->push_back("one");
-  l->push_back("one");
-  l->push_back("one");
+  std::cout << endl;
 
+  std::cout << "Testing remove" << endl;
+  l->remove(3);
   std::cout << l->getDebugString();
-  
+  std::cout << endl;
+
+  std::cout << "Testing []" << endl;
+  std::cout << "l[1]:" << (*l)[1] << endl;
+  std::cout << l->getDebugString();
+
   return 0;
 }

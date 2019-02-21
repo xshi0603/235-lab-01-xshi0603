@@ -22,7 +22,11 @@ void Node::setNext(Node *next){
   this->next = next;
 }
 
-std::string &Node::getData(){
+std::string Node::getData(){
+  return data;
+}
+
+std::string &Node::getRef(){
   return data;
 }
 
