@@ -9,6 +9,7 @@ using std::endl;
 class List{
 private:
   Node *head;
+  int currSize;
 public:
   List();
   ~List();

@@ -4,31 +4,32 @@
 #include "List.h"
 
 List::List(){
-  head = nullptr;
+  head = new Node("dummy", nullptr);
+  currSize = 0;
 }
 
 List::~List(){
   std::cout << "In the destructor\n";
-  if (head != nullptr){
-    Node *t,*t2;
-    
-    t=head->getNext();
-    while (t!=nullptr){
-      t2=t;
-      t=t->getNext();
-      delete t2;
-    }
-  } 
+  //if (head != nullptr){
+  Node *t,*t2;
+  
+  t=head->getNext();
+  while (t!=nullptr){
+    t2=t;
+    t=t->getNext();
+    delete t2;
+  }
+  //} 
 }
 
 void List::insert(std::string data){
-  Node *t = new Node(data,nullptr);
-  if (head==nullptr)
-    head=t;
-  else{
-    t->setNext(head);
-    head = t;
-  }
+  Node *t = new Node(data,head->getNext());
+  //if (head==nullptr)
+  //  head=t;
+  //else{
+  //}
+  head->setNext(t);
+  currSize++;
 }
 
 std::string List::getDebugString(){
@@ -43,34 +44,25 @@ std::string List::getDebugString(){
 }
 
 void List::push_back(std::string data){ // inserts at the end of the vector
-  if (head != nullptr) {
-    Node *newNode = new Node(data);
-    Node *t = head;
-    while (t->getNext() != nullptr){
-      t=t->getNext();
-    }
-    t->setNext(newNode); //segfaults
+
+  Node *newNode = new Node(data);
+  Node *t = head;
+  while (t->getNext() != nullptr){
+    t=t->getNext();
   }
-  else {
-    Node *newNode = new Node(data);
-    head = newNode;
-  }
+  t->setNext(newNode);
+  currSize++;
+
 }
 
 int List::size(){ // returns the size
-  int sizeCounter = 0;
-  Node *t = head;
-  while (t != nullptr){
-    sizeCounter++;
-    t=t->getNext();
-  }
-  return sizeCounter;
+  return currSize;
 }
 
 
 std::string &List::at(int index){ // returns the element at a location
   Node *t = head;
-  for (int i = 0; i < index; i++) {
+  for (int i = 0; i < index + 1; i++) {
     t=t->getNext();
   }
   return t->getRef();
