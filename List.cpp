@@ -73,18 +73,13 @@ std::string List::insert(int index,std::string data){ // inserts string at locat
   Node *t = head;
   Node *newNode;
 
-  if (index == 0) {
-    newNode = new Node(data, t);
-    head = newNode;
-    return t->getNext()->getData();
-  }
-
-  for (int i = 0; i < index - 1; i++) {
+  for (int i = 0; i < index; i++) {
     t=t->getNext();
   }
 
   newNode = new Node(data, t->getNext());
   t->setNext(newNode);
+  currSize++;
   return t->getNext()->getData();
 
 }
@@ -96,7 +91,7 @@ void List::remove(int input) { // removes the element at location i
 
   int counter = 0;
 
-  while (counter < input - 1) {
+  while (counter < input) {
     t = temp;
     temp = temp->getNext();
     counter++;
@@ -104,6 +99,8 @@ void List::remove(int input) { // removes the element at location i
 
   t->setNext(temp->getNext()); 
   delete temp;
+  
+  currSize--;
 }
 
 std::string &List::operator[](int input) { // overloaded square brackets

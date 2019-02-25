@@ -25,11 +25,8 @@ int main()
   std::cout << "The element at index 3 is: " << l->at(3) << endl;
   std::cout << endl;
 
-  
-
-  /*
   std::cout << "Testing insert" << endl;
-  l->insert(0, "hello1");  
+  l->insert(2, "hello1");  
   std::cout << l->getDebugString();
   std::cout << endl;
 
@@ -40,7 +37,9 @@ int main()
 
   std::cout << "Testing []" << endl;
   std::cout << "l[1]:" << (*l)[1] << endl;
-  std::cout << l->getDebugString();
-  */
+
+  std::cout << "Testing size" << endl;
+  std::cout << "Size: " << l->size() << endl;
+
   return 0;
 }
